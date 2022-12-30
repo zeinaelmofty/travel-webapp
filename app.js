@@ -20,7 +20,6 @@ app.use(cookieParser());
 
 
 
-
 //var MongoClient = require('mongodb').MongoClient
 var username="";
 
@@ -233,7 +232,7 @@ else if(result[i].toLowerCase().includes("inca"))
 });
 
 
-//app.listen(4000);
-app.listen(PORT, () => {
-  console.log(`server started on port ${PORT}`);
-});
+app.listen(3030);
+
+//app.listen(PORT, () => {
+// console.log(`server started on port ${PORT}`); });
