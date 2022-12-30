@@ -169,7 +169,6 @@ app.get('/santorini',function(req,res){
 
 
 
-
 app.post('/search',function(req,res){
   const searchVAL= req.body.Search
   console.log(searchVAL)
