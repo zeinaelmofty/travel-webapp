@@ -14,13 +14,13 @@ app.set('view engine','ejs');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));  
 app.use(bodyParser.json());
 app.use(cookieParser());
 
 
 
-//var MongoClient = require('mongodb').MongoClient
+var MongoClient = require('mongodb').MongoClient
 var username="";
 
 app.post('/login', (req,res) =>{
@@ -166,6 +166,250 @@ app.get('/santorini',function(req,res){
   res.render('santorini')
 });
 
+app.post('/wanttogo',async(req,res) =>{
+  var dest= [];
+  MongoClient.connect("mongodb://localhost:27017/Networks", async function(err,client){
+    if(err) throw err
+    var db = client.db('myDB');
+    var result = db.collection("myCollection").find({}).toArray(function(err,result){
+      if (err) throw err;
+      db.close;
+    
+    for(let y=0;y<(result).length;y++){
+      console.log(result[y].username);
+      if(username==result[y].username)
+      {
+      var goList=result[y].wantTo; 
+
+  for (let i = 0; i < goList.length; i++) {
+  dest.push(goList[i])
+}
+}}
+console.log(dest);
+res.render('wanttogo',{dest});
+}) ;
+
+})});
+
+app.post('/inca', (req,res) =>{
+  MongoClient.connect("mongodb://localhost:27017/Networks", async function(err,client){
+    if(err) throw err
+    var db = client.db('myDB');
+    var result = db.collection("myCollection").find({}).toArray(function(err,result){
+      if (err) throw err;
+      console.log(result);
+      db.close;
+      var user=username.toArray;
+    var flag="false";
+    console.log(result);
+    console.log(goList);
+    for(let y=0;y<(result).length;y++){
+      console.log(result[y].username);
+      if(username==result[y].username)
+      {
+      var goList=result[y].wantTo;
+      for (let i = 0; i < goList.length; i++) {
+        if(goList[i]=="Inca"){
+          flag="true";
+        }
+      }
+    }}
+    
+      if (flag=="true"){
+        var msg="This destination is already in the list"
+      res.render('error',{msg})
+      return;
+      }
+      else{
+        db.collection("myCollection").update({},{$push:{wantTo:"Inca"}})
+      }
+    
+  return; });
+})});
+
+
+
+app.post('/annapurna', (req,res) =>{
+  MongoClient.connect("mongodb://localhost:27017/Networks", async function(err,client){
+    if(err) throw err
+    var db = client.db('myDB');
+    var result = db.collection("myCollection").find({}).toArray(function(err,result){
+      if (err) throw err;
+      console.log(result);
+      db.close;
+      var user=username.toArray;
+    var flag="false";
+    console.log(result);
+    console.log(goList);
+    for(let y=0;y<(result).length;y++){
+      console.log(result[y].username);
+      if(username==result[y].username)
+      {
+      var goList=result[y].wantTo;
+      for (let i = 0; i < goList.length; i++) {
+        if(goList[i]=="annapurna"){
+          flag="true";
+        }
+      }
+    }}
+    
+      if (flag=="true"){
+        var msg="This destination is already in the list"
+      res.render('error',{msg})
+      return;
+      }
+      else{
+        db.collection("myCollection").update({},{$push:{wantTo:"annapurna"}})
+      }
+    
+  return; });
+})});
+
+
+app.post('/bali', (req,res) =>{
+  MongoClient.connect("mongodb://localhost:27017/Networks", async function(err,client){
+    if(err) throw err
+    var db = client.db('myDB');
+    var result = db.collection("myCollection").find({}).toArray(function(err,result){
+      if (err) throw err;
+      console.log(result);
+      db.close;
+      var user=username.toArray;
+    var flag="false";
+    console.log(result);
+    console.log(goList);
+    for(let y=0;y<(result).length;y++){
+      console.log(result[y].username);
+      if(username==result[y].username)
+      {
+      var goList=result[y].wantTo;
+      for (let i = 0; i < goList.length; i++) {
+        if(goList[i]=="bali"){
+          flag="true";
+        }
+      }
+    }}
+    
+      if (flag=="true"){
+        var msg="This destination is already in the list"
+      res.render('error',{msg})
+      return;
+      }
+      else{
+        db.collection("myCollection").update({},{$push:{wantTo:"bali"}})
+      }
+    
+  return; });
+})});
+
+app.post('/santorini', (req,res) =>{
+  MongoClient.connect("mongodb://localhost:27017/Networks", async function(err,client){
+    if(err) throw err
+    var db = client.db('myDB');
+    var result = db.collection("myCollection").find({}).toArray(function(err,result){
+      if (err) throw err;
+      console.log(result);
+      db.close;
+      var user=username.toArray;
+    var flag="false";
+    console.log(result);
+    console.log(goList);
+    for(let y=0;y<(result).length;y++){
+      console.log(result[y].username);
+      if(username==result[y].username)
+      {
+      var goList=result[y].wantTo;
+      for (let i = 0; i < goList.length; i++) {
+        if(goList[i]=="santorini"){
+          flag="true";
+        }
+      }
+    }}
+    
+      if (flag=="true"){
+        var msg="This destination is already in the list"
+      res.render('error',{msg})
+      return;
+      }
+      else{
+        db.collection("myCollection").update({},{$push:{wantTo:"santorini"}})
+      }
+    
+  return; });
+})});
+
+app.post('/paris', (req,res) =>{
+  MongoClient.connect("mongodb://localhost:27017/Networks", async function(err,client){
+    if(err) throw err
+    var db = client.db('myDB');
+    var result = db.collection("myCollection").find({}).toArray(function(err,result){
+      if (err) throw err;
+      console.log(result);
+      db.close;
+      var user=username.toArray;
+    var flag="false";
+    console.log(result);
+    console.log(goList);
+    for(let y=0;y<(result).length;y++){
+      console.log(result[y].username);
+      if(username==result[y].username)
+      {
+      var goList=result[y].wantTo;
+      for (let i = 0; i < goList.length; i++) {
+        if(goList[i]=="paris"){
+          flag="true";
+        }
+      }
+    }}
+    
+      if (flag=="true"){
+        var msg="This destination is already in the list"
+      res.render('error',{msg})
+      return;
+      }
+      else{
+        db.collection("myCollection").update({},{$push:{wantTo:"paris"}})
+      }
+    
+  return; });
+})});
+
+
+app.post('/rome', (req,res) =>{
+  MongoClient.connect("mongodb://localhost:27017/Networks", async function(err,client){
+    if(err) throw err
+    var db = client.db('myDB');
+    var result = db.collection("myCollection").find({}).toArray(function(err,result){
+      if (err) throw err;
+      console.log(result);
+      db.close;
+      var user=username.toArray;
+    var flag="false";
+    console.log(result);
+    console.log(goList);
+    for(let y=0;y<(result).length;y++){
+      console.log(result[y].username);
+      if(username==result[y].username)
+      {
+      var goList=result[y].wantTo;
+      for (let i = 0; i < goList.length; i++) {
+        if(goList[i]=="rome"){
+          flag="true";
+        }
+      }
+    }}
+    
+      if (flag=="true"){
+        var msg="This destination is already in the list"
+      res.render('error',{msg})
+      return;
+      }
+      else{
+        db.collection("myCollection").update({},{$push:{wantTo:"rome"}})
+      }
+    
+  return; });
+})});
 
 
 app.post('/search',function(req,res){
@@ -232,7 +476,4 @@ else if(result[i].toLowerCase().includes("inca"))
 });
 
 
-app.listen(3030);
-
-//app.listen(PORT, () => {
-// console.log(`server started on port ${PORT}`); });
+app.listen(3000);
