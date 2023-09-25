@@ -1,1 +1,2 @@
 # travel-webapp
+Built a web application for a simple travelling website using JavaScript, HTML, and Node.js. The project involved designing and implementing an interactive website that provided information on travel destinations, flight bookings, and accommodation options. The application utilised JavaScript for client-side interactivity, HTML for web page structure, and Node.js for server-side functionality. The web application was deployed online through heroku.com, showcasing proficiency in full-stack web development, JavaScript programming, and web deployment.
